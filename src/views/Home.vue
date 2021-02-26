@@ -1,15 +1,22 @@
 <template>
   <div class="home">
-    <h2>home</h2>
+    <ListOfBear/>
   </div>
 </template>
 
 <script>
 
+import ListOfBear from "@/components/ListOfBear";
+
 export default {
   name: 'Home',
   components: {
-  }
+    ListOfBear
+  },
+  methods:{
+
+  },
+
 }
 </script>
 <style>
