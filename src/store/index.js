@@ -1,15 +1,13 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import axios from "axios";
+import beerStore from "@/store/beers";
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    listOfBear: null,
     randomBeer: null,
     basketIDsList: [],
-    currentPage: 1
   },
   mutations: {
   },
@@ -21,5 +19,6 @@ export default new Vuex.Store({
 
   },
   modules: {
+    beerStore
   },
 })
