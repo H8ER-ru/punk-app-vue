@@ -1,41 +1,43 @@
 <template>
-  <div class="random-beer" v-if="getRandomBear">
-    <div class="random-beer__img">
-      <img :src="getRandomBear.image_url" alt="without image(">
-    </div>
-    <div class="random-beer__description">
-      <h1 class="random-beer__name">{{getRandomBear.name}}</h1>
-      <h2 class="random-beer__tagline">{{getRandomBear.tagline}}</h2>
-      <p class="random-beer__text">{{getRandomBear.description}}</p>
-      <h2>It will be good with - </h2>
-      <ul class="random-beer__food-list">
-        <li class="random-beer__food-item" v-for=" food in getRandomBear.food_pairing">{{food}}</li>
-      </ul>
-      <h2>Tips from brewers</h2>
-      <p> - {{getRandomBear.brewers_tips}}</p>
+  <div>
+    <loader/>
+    <div class="random-beer" v-if="randomBeer">
+      <div class="random-beer__img">
+        <img :src="randomBeer.image_url" alt="without image(">
+      </div>
+      <div class="random-beer__description">
+        <h1 class="random-beer__name">{{randomBeer.name}}</h1>
+        <h2 class="random-beer__tagline">{{randomBeer.tagline}}</h2>
+        <p class="random-beer__text">{{randomBeer.description}}</p>
+        <h2>It will be good with - </h2>
+        <ul class="random-beer__food-list">
+          <li class="random-beer__food-item" v-for=" food in randomBeer.food_pairing">{{food}}</li>
+        </ul>
+        <h2>Tips from brewers</h2>
+        <p> - {{randomBeer.brewers_tips}}</p>
+        <BButton @click="toggleBeer">Toggle random beer</BButton>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import axios from "axios";
-import {mapGetters} from "vuex";
+import {mapActions, mapGetters} from "vuex";
+import Loader from "@/components/Loader";
 
 export default {
   name: 'RandomBeer',
+  components: {Loader},
   methods:{
-    fetchRandomBeer(){
-      axios.get('https://api.punkapi.com/v2/beers/random')
-          .then(result => {
-            this.$store.state.randomBeer = result.data[0]
-            console.log(result.data)
-          })
-    },
+   ...mapActions('beerStore',['fetchRandomBeer']),
+    toggleBeer(){
+     this.fetchRandomBeer()
+    }
   },
   computed:{
-    ...mapGetters(['getRandomBear'])
+    ...mapGetters('beerStore',['randomBeer'])
   },
-  created() {
+  beforeMount() {
     this.fetchRandomBeer()
   }
 
@@ -50,6 +52,7 @@ h1
   margin-top: 30px
   &__img
     img
+      min-width: 250px
       max-width: 350px
       max-height: 750px
   &__description

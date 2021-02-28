@@ -1,5 +1,6 @@
 <template>
   <div class="beer">
+    <Loader/>
     <div class="beer__item" v-for="beer in beersList" :key="beer.id">
       <div class="beer__info">
         <img class="beer__image" :src="beer.image_url" alt="">
@@ -13,11 +14,12 @@
 </template>
 
 <script>
-import axios from "axios";
+import Loader from "@/components/Loader";
 import {mapGetters} from 'vuex'
 export default {
   name: "ListOfBear",
-  methods:{
+  components:{
+    Loader
   },
   mutations:{
   },

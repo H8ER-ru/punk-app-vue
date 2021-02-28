@@ -6,7 +6,7 @@
     <div class="basket__block">
       <h3>Your choose:</h3>
       <div class="basket__list">
-        <div class="basket__item">
+        <div class="basket__item" v-for="">
           <img class="basket__img" src="" alt="">
           <div class="basket__name"></div>
           <button class="basket__delete">
@@ -26,7 +26,6 @@ export default {
 
 <style lang="sass" scoped>
 .basket
-  padding-top: 30px
   &__item
     width: 500px
     height: 500px
