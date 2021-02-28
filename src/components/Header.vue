@@ -1,6 +1,6 @@
 <template>
   <b-navbar toggleable="lg" type="dark" variant="dark">
-    <a href="/" >
+    <a href="" >
       <b-navbar-brand>Punk Beer App</b-navbar-brand>
     </a>
 

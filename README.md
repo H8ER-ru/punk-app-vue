@@ -1,19 +1,17 @@
-# punk-app-vue
+# Punk-app-vue
 
-## Project setup
-```
-npm install
-```
+## https://veras.fun/toShowProjects/punk-app/
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## что было сделано :
+ - Запросы к открытому API "Punk API" (https://punkapi.com/documentation/v2)
+ - Вывод карточек с пивом
+ - Лоадер во время загрузки страниц
+ - пагинация списка 
+ - возможность загрузить сразу нужную страницу в списке
+   (напрмер сразу третья страница https://veras.fun/toShowProjects/punk-app/#/?page=3)
+ - Страница со случайной карточкой с пивом 
+ - импровизированная корзина с возможностью удаления и добавления элементов
+ - адаптивная верстка под все устройства
+## главные плагины, библиотеки, фреймворки
+    Vue.js, vuex, vue-router, bootstrap , axios.
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
