@@ -13,7 +13,7 @@
 
 <script>
 
-import ListOfBear from "@/components/ListOfBear";
+import ListOfBear from "@/components/ListOfBeer";
 import Pagination from "@/components/Pagination";
 import {mapActions, mapGetters} from "vuex";
 

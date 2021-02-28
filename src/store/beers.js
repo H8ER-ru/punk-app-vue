@@ -1,7 +1,7 @@
 import axios from "@/services/axios";
 import mutations from "@/store/mutations";
 
-const {BEERS_LIST, CURRENT_PAGE, RANDOM_BEER} = mutations
+const {BEERS_LIST, CURRENT_PAGE, RANDOM_BEER, ADD_BASKET, DELETE_BASKET} = mutations
 
 const beerStore ={
     namespaced: true,
@@ -10,7 +10,7 @@ const beerStore ={
         currentPage: 1,
         beerPerPage: 15,
         randomBeer: null,
-        basketsList: [],
+        basketList: [],
     },
     getters:{
         randomBeer: ({randomBeer}) => randomBeer,
@@ -18,7 +18,7 @@ const beerStore ={
         currentPage: ({currentPage}) => currentPage,
         beerPerPage: ({beerPerPage}) => beerPerPage,
         beerLength : () => 200,
-        basketsList: ({basketsList}) => basketsList
+        basketList: ({basketsList}) => basketsList
     },
     actions:{
         async fetchBeer({getters, commit, dispatch}){
@@ -50,6 +50,12 @@ const beerStore ={
                 dispatch('toggleLoader', false, {root: true})
             }
         },
+        addBasket({commit}, beer){
+            commit(ADD_BASKET, beer)
+        },
+        deleteBasket({commit}, beer){
+            commit(DELETE_BASKET, beer)
+        }
     },
     mutations:{
         [BEERS_LIST](state, value){
@@ -60,6 +66,20 @@ const beerStore ={
         },
         [RANDOM_BEER](state, value){
             state.randomBeer = value
+        },
+        [ADD_BASKET](state, value){
+            if(state.basketList.indexOf(value) !== -1){
+                state.basketList[state.basketList.indexOf(value)].count+=1
+            }else{
+                state.basketList.push(value)
+                value.count = 1
+            }
+        },
+        [DELETE_BASKET](state, value){
+            function removeElementById(arr, value){
+                return arr.filter(element => element.id !== value)
+            }
+            state.basketList =  removeElementById(state.basketList, value.id)
         }
     }
 }
