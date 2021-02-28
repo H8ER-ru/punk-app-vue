@@ -4,7 +4,7 @@
       <h2>Basket is empty. Choose beer!</h2>
     </div>
     <div class="basket__block" v-if="basketList.length" >
-      <h3 class="basket__title">Your choose:</h3>
+      <h3 class="basket__title">Your choose: </h3>
       <div class="basket__list">
         <div class="basket__item" v-for="beer in basketList">
           <div class="basket__img" >
@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import {mapActions, mapGetters} from "vuex";
+import {mapActions} from "vuex";
 
 export default {
   name: "Basket",
@@ -101,4 +101,22 @@ export default {
       height: 1.5rem
       width: 1.5rem
 
+@media screen and (max-width: 768px)
+  .basket
+    h4
+      font-size: 1.3rem
+    &__item
+      width: 95%
+      height: 160px
+      padding: 0
+    &__list
+      padding: 5px
+    &__img
+      height: 80px
+      padding-left: 10px
+      justify-content: flex-start
+      width: 100px
+      img
+        max-width: 160px
+        height: 80px
 </style>

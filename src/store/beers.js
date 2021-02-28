@@ -26,8 +26,6 @@ const beerStore ={
                 dispatch('toggleLoader', true, {root: true})
                 const {currentPage, beerPerPage} = getters
                 const response = await axios.get(`/beers?page=${currentPage}&per_page=${beerPerPage}`)
-                console.log(response.data)
-                console.log(response)
                 commit(BEERS_LIST, response.data)
             }catch (e){
                 console.log(e)
@@ -68,12 +66,14 @@ const beerStore ={
             state.randomBeer = value
         },
         [ADD_BASKET](state, value){
-            if(state.basketList.indexOf(value) !== -1){
-                state.basketList[state.basketList.indexOf(value)].count+=1
+            let item = state.basketList.find(currentValue => currentValue.id === value.id)
+            if(item){
+                state.basketList[state.basketList.indexOf(item)].count+=1
             }else{
                 state.basketList.push(value)
                 value.count = 1
             }
+
         },
         [DELETE_BASKET](state, value){
             function removeElementById(arr, value){

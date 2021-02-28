@@ -1,36 +1,24 @@
 <template>
   <div>
-    <loader/>
-    <div class="random-beer" v-if="randomBeer">
-      <div class="random-beer__img">
-        <img :src="randomBeer.image_url" alt="without image(">
-      </div>
-      <div class="random-beer__description">
-        <h1 class="random-beer__name">{{randomBeer.name}}</h1>
-        <h2 class="random-beer__tagline">{{randomBeer.tagline}}</h2>
-        <p class="random-beer__text">{{randomBeer.description}}</p>
-        <h2>It will be good with - </h2>
-        <ul class="random-beer__food-list">
-          <li class="random-beer__food-item" v-for=" food in randomBeer.food_pairing">{{food}}</li>
-        </ul>
-        <h2>Tips from brewers</h2>
-        <p> - {{randomBeer.brewers_tips}}</p>
-        <BButton @click="toggleBeer">Toggle random beer</BButton>
-      </div>
-    </div>
+    <BeerDetail
+      :beer="randomBeer"
+      :is-random="true"
+      @toggleBeer="onToggleBeer"
+    />
   </div>
 </template>
 
 <script>
 import {mapActions, mapGetters} from "vuex";
 import Loader from "@/components/Loader";
+import BeerDetail from "@/components/BeerDetail";
 
 export default {
   name: 'RandomBeer',
-  components: {Loader},
+  components: {BeerDetail, Loader},
   methods:{
    ...mapActions('beerStore',['fetchRandomBeer']),
-    toggleBeer(){
+    onToggleBeer(){
      this.fetchRandomBeer()
     }
   },

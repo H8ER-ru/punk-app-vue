@@ -24,13 +24,28 @@ export default {
     ListOfBear
   },
   methods:{
-    ...mapActions('beerStore', ['changeCurrentPage']),
-    onPageChanged(page){
+    ...mapActions('beerStore', ['changeCurrentPage', 'fetchBeer']),
+    onPageQueryChange({page = 1}){
       this.changeCurrentPage(Number(page))
     },
+    onPageChanged(page){
+      this.$router.push({query: {page}})
+    },
+  },
+  watch:{
+    "$route.query":{
+      handler: "onPageQueryChange",
+      immediate: true,
+      deep: true
+    }
   },
   computed:{
     ...mapGetters('beerStore', ['currentPage', 'beerPerPage', 'beerLength'])
+  },
+  created() {
+    if (this.$route.query.page){
+      this.changeCurrentPage(Number(this.$route.query.page))
+    }
   }
 
 }

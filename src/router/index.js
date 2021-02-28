@@ -1,8 +1,11 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+
 import Home from '../views/Home.vue'
 import RandomBeer from '../views/RandomBeer'
 import Basket from "@/views/Basket";
+import Beer from "@/views/Beer";
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -20,7 +23,13 @@ const routes = [
     path: '/random',
     name: 'RandomBeer',
     component: RandomBeer
-  }
+  },
+  {
+    path: '/beer',
+    name: 'Beer',
+    component: Beer
+  },
+
 ]
 
 const router = new VueRouter({
