@@ -25,7 +25,7 @@ const routes = [
     component: RandomBeer
   },
   {
-    path: '/beer',
+    path: '/beer/:id',
     name: 'Beer',
     component: Beer
   },

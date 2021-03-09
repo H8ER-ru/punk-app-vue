@@ -17,7 +17,7 @@ export default {
   name: 'RandomBeer',
   components: {BeerDetail, Loader},
   methods:{
-   ...mapActions('beerStore',['fetchRandomBeer']),
+   ...mapActions('beerStore',['fetchRandomBeer','clearRandomBeer']),
     onToggleBeer(){
      this.fetchRandomBeer()
     }
@@ -27,6 +27,9 @@ export default {
   },
   beforeMount() {
     this.fetchRandomBeer()
+  },
+  destroyed() {
+    this.clearRandomBeer()
   }
 
 }

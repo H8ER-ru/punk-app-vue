@@ -35,7 +35,6 @@ export default {
     },
     isRandom:{
       type: Boolean,
-      required: true,
       default: false
     },
   },

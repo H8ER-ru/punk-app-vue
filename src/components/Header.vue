@@ -1,8 +1,8 @@
 <template>
   <b-navbar toggleable="lg" type="dark" variant="dark">
-    <a href="" >
+    <router-link to="/" >
       <b-navbar-brand>Punk Beer App</b-navbar-brand>
-    </a>
+    </router-link>
 
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 

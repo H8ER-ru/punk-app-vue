@@ -1,6 +1,6 @@
 <template>
   <div class="beer__item" >
-    <div class="beer__info">
+    <div class="beer__info" @click="showDetail">
       <img class="beer__image" :src="beer.image_url" alt="">
       <h2 class="beer_title">{{beer.name}}</h2>
       <p class="beer__description">{{beer.tagline}}</p>
@@ -22,6 +22,9 @@ export default {
   methods:{
     addToBasket(){
       this.$emit('addToBasket', this.beer)
+    },
+    showDetail: function () {
+      this.$router.push({path: `/beer/${this.beer.id}`})
     }
   }
 
@@ -30,6 +33,8 @@ export default {
 
 <style lang="sass" scoped>
 .beer
+  &__info
+    cursor: pointer
   &__item
     text-align: center
     padding: 10px

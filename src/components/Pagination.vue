@@ -23,8 +23,7 @@ export default {
       default: 15
     },
     total:{
-      type: Number,
-      default : 15
+      type: Number
     }
   },
   computed:{
