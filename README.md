@@ -1,7 +1,5 @@
 # Punk-app-vue
 
-## https://veras.fun/
-
 ## что было сделано :
  - Запросы к открытому API "Punk API" (https://punkapi.com/documentation/v2)
  - Вывод карточек с пивом
